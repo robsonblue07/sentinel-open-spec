@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sentinel-verify"
+version = "10.0.0"
+description = "Offline verifier for Sentinel signed receipts and evidence manifests."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Apache-2.0" }
+dependencies = [
+    "pydantic>=2.9.0",
+    "cryptography>=43.0.0",
+]
+
+[project.scripts]
+sentinel-verify = "sentinel_verify.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["sentinel_verify*", "packages*", "apps*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

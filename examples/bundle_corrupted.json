@@ -1,0 +1,58 @@
+{
+  "manifest": {
+    "schema_version": "sentinel.manifest.v1",
+    "manifest_id": "55555555-5555-4555-8555-555555555551",
+    "tenant_id": "11111111-1111-4111-8111-111111111111",
+    "batch_sequence_number": 1,
+    "previous_manifest_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "merkle_root_hex": "79e4d65f52df1565c1f49022290d0d7ff2ab0341dd8748ec6b3ba5c47ba24c49",
+    "leaf_count": 1,
+    "receipt_ids": [
+      "44444444-4444-4444-8444-444444444441"
+    ],
+    "s3_worm_object_key": "worm-custody/example/seq=000000000001/root=79e4d65f52df1565c1f49022290d0d7ff2ab0341dd8748ec6b3ba5c47ba24c49",
+    "s3_version_id": null,
+    "signing_key_id": "custody-ledger-key-v1",
+    "sealed_at_utc": "2026-01-15T12:00:00Z",
+    "ed25519_signature_hex": "d28ce27c825b9939e398948bdebd7e83f6009792687ef3237cafac9ef9af62e698c5efd676d5507be32a7ed09e038fb56253d277cc9b8d21f0dc5bc2545aed05"
+  },
+  "entries": [
+    {
+      "receipt": {
+        "schema_version": "sentinel.receipt.v1",
+        "receipt_id": "44444444-4444-4444-8444-444444444441",
+        "tenant_id": "11111111-1111-4111-8111-111111111111",
+        "request_id": "22222222-2222-4222-8222-222222222221",
+        "idempotency_key": "idem-example-01",
+        "request_hash": "15ff79fd983c91f74a8ab3cc00fdafc05e05fa499f5767e2e6f1f6e49b4004cf",
+        "canonical_args_hash": "4eb69e05da0a660798f6d6eb9be5c27066128ec14b573cb53e2885c25a6c1d7f",
+        "policy_bundle_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "decision": "ALLOW",
+        "reason_code": "READ_ONLY_SCOPE_AUTHORIZED",
+        "approval_id": null,
+        "execution_state": "SUCCEEDED",
+        "redacted_fields": [],
+        "signing_key_id": "workload-key-v1",
+        "evaluated_at_utc": "2026-01-15T12:00:00Z",
+        "ed25519_signature_hex": "b583653f3f88a5e50f655dcab63057ed5ddb74c1e140fec0345bf2ae13627ec9845dd63dc742491fd975afe80bee409d87466884f74386a6cf1bb2657b8fc10c"
+      },
+      "audit_path": []
+    }
+  ],
+  "keys": [
+    {
+      "key_id": "workload-key-v1",
+      "principal_type": "WORKLOAD",
+      "public_key_hex": "d5b3f58bf6e20cf1d9dbe231a66825df519f588711c2c32d4e368148fdd18a19",
+      "status": "ACTIVE",
+      "valid_from_utc": "2025-12-16T12:00:00+00:00"
+    },
+    {
+      "key_id": "custody-ledger-key-v1",
+      "principal_type": "CUSTODY_LEDGER",
+      "public_key_hex": "eb685c1391a04bb29952aa7d566d9269d4a2e289a5803e91958560a9dc74877a",
+      "status": "ACTIVE",
+      "valid_from_utc": "2025-12-16T12:00:00+00:00"
+    }
+  ]
+}

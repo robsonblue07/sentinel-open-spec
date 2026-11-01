@@ -1,0 +1,41 @@
+﻿name: Public Spec Verification CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install . pytest
+
+      - name: Run Test Suite
+        run: |
+          pytest tests/ -v
+
+      - name: Test Valid Bundle (Exit Code 0)
+        run: |
+          python -m sentinel_verify.cli --trust-store examples/bundle_valid.json --bundle examples/bundle_valid.json
+
+      - name: Test Corrupted Bundle (Exit Code 1)
+        run: |
+          if python -m sentinel_verify.cli --trust-store examples/bundle_corrupted.json --bundle examples/bundle_corrupted.json; then
+            echo "Expected verification failure, but passed."
+            exit 1
+          else
+            echo "Verification correctly failed for corrupted bundle."
+          fi

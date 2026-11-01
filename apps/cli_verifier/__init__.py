@@ -1,0 +1,1 @@
+"""Offline sentinel-verify command."""
